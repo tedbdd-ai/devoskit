@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "skills/design/app-mockup/assets/canvas.html"
+        ],
+        "createdAt": "2026-11-20T15:43:02.225Z",
+        "reason": "Claude: phone-frame template; status bar and screen are full-bleed by design like iOS, insets come from safe areas (54pt top, 34pt bottom)"
+      }
+    ]
+  }
+}
