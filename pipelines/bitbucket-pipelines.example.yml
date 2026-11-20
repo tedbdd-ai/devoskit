@@ -1,0 +1,45 @@
+# Baustein für das App-Repo: Checks auf jedem Branch, Staging automatisch, Produktion nur nach Freigabe.
+# Freigabe zusätzlich absichern: Repository settings → Deployments → production → nur bestimmte Personen dürfen auslösen.
+image: node:22
+
+definitions:
+  steps:
+    - step: &checks
+        name: Checks
+        caches: [node]
+        script:
+          - npm ci
+          - npx prettier --check .          # <anpassen>
+          - npx eslint .                    # <anpassen>
+          - npx tsc --noEmit                # <anpassen>
+          - npm test                        # <anpassen>
+    - step: &build
+        name: Build
+        script:
+          - npm ci
+          - npm run build                   # <anpassen>
+        artifacts: [dist/**]
+
+pipelines:
+  pull-requests:
+    "**":
+      - step: *checks
+  branches:
+    main:
+      - step: *checks
+      - step: *build
+      - step:
+          name: Deploy Staging
+          deployment: staging
+          script:
+            - echo "deploy to staging"      # <anpassen>
+      - step:
+          name: Smoke-Tests Staging
+          script:
+            - echo "Test-App: Smoke-Suite gegen Staging"   # <Test OS>
+      - step:
+          name: Deploy Production
+          deployment: production
+          trigger: manual                   # menschliche Freigabe
+          script:
+            - echo "deploy to production"   # <anpassen>

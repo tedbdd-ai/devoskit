@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App Mockup Canvas</title>
+<style>
+  /* Canvas-Tokens (nicht Teil des App-Designs) */
+  :root {
+    --canvas-bg: #E9E9EC;
+    --canvas-ink: #1C1C1E;
+    --canvas-muted: #6E6E73;
+    --frame-w: 390px;
+    --frame-h: 844px;
+    --frame-radius: 56px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --canvas-bg: #111113; --canvas-ink: #F2F2F7; --canvas-muted: #98989D; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--canvas-bg); color: var(--canvas-ink);
+    font: 15px/1.4 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  }
+  header.canvas-head { padding: 32px 48px 0; }
+  header.canvas-head h1 { margin: 0 0 4px; font-size: 22px; font-weight: 600; }
+  header.canvas-head p { margin: 0; color: var(--canvas-muted); }
+  .board { display: flex; gap: 48px; padding: 32px 48px 48px; overflow-x: auto; align-items: flex-start; }
+  .variant { flex: 0 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  .variant-meta h2 { margin: 0; font-size: 17px; font-weight: 600; }
+  .variant-meta p { margin: 4px 0 0; color: var(--canvas-muted); max-width: var(--frame-w); }
+  .states { display: flex; gap: 8px; }
+  .states button {
+    min-height: 32px; padding: 0 12px; border-radius: 16px; border: 1px solid color-mix(in srgb, var(--canvas-ink) 20%, transparent);
+    background: transparent; color: var(--canvas-ink); font: inherit; font-size: 13px; cursor: pointer;
+  }
+  .states button[aria-pressed="true"] { background: var(--canvas-ink); color: var(--canvas-bg); }
+
+  /* Phone-Frame: App-Tokens werden pro Frame per style="" gesetzt */
+  .frame {
+    --bg: #FFFFFF; --surface: #F2F2F7; --ink: #000000; --muted: #6E6E73; --accent: #0A84FF; --radius: 16px;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    position: relative; width: var(--frame-w); height: var(--frame-h); border-radius: var(--frame-radius);
+    background: var(--bg); color: var(--ink); font-family: var(--font); overflow: hidden;
+    box-shadow: 0 0 0 10px #000, 0 24px 64px rgba(0,0,0,.25);
+  }
+  .statusbar { height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; font-weight: 600; font-size: 16px; }
+  .island { position: absolute; top: 11px; left: 50%; translate: -50% 0; width: 126px; height: 37px; border-radius: 20px; background: #000; }
+  .screen { position: absolute; inset: 54px 0 34px; overflow-y: auto; }
+  .home-indicator { position: absolute; bottom: 8px; left: 50%; translate: -50% 0; width: 134px; height: 5px; border-radius: 3px; background: var(--ink); opacity: .9; }
+
+  /* State-Umschaltung */
+  .frame [data-show] { display: none; }
+  .frame[data-state="ideal"] [data-show="ideal"],
+  .frame[data-state="loading"] [data-show="loading"],
+  .frame[data-state="empty"] [data-show="empty"],
+  .frame[data-state="error"] [data-show="error"] { display: block; }
+
+  /* Hilfen */
+  .skeleton { background: color-mix(in srgb, var(--ink) 8%, transparent); border-radius: 8px; animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .5; } }
+  @media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } }
+</style>
+</head>
+<body>
+<header class="canvas-head">
+  <h1>SCREEN-NAME: 3 Richtungen</h1>
+  <p>Kernaufgabe: … · Plattform: iOS · Stand: DATUM</p>
+</header>
+
+<main class="board">
+  <!-- Variante A: wiederhole diesen Block für B und C -->
+  <div class="variant">
+    <div class="variant-meta">
+      <h2>A · Name der Richtung</h2>
+      <p>Eine Zeile, warum diese Richtung zur Aufgabe passt.</p>
+    </div>
+    <div class="states" role="group" aria-label="State"></div>
+    <section class="frame" data-state="ideal" style="--accent:#0A84FF;">
+      <div class="island"></div>
+      <div class="statusbar"><span>9:41</span><span aria-hidden="true">●●● ▮</span></div>
+      <div class="screen">
+        <div data-show="ideal"><!-- Ideal-State --></div>
+        <div data-show="loading"><!-- Skeleton in Layout-Form --></div>
+        <div data-show="empty"><!-- Erklärung + primäre Aktion --></div>
+        <div data-show="error"><!-- Klartext + Erneut versuchen --></div>
+      </div>
+      <div class="home-indicator"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+  // Baut die State-Buttons pro Variante
+  const STATES = ["ideal", "loading", "empty", "error"];
+  const LABELS = { ideal: "Ideal", loading: "Loading", empty: "Empty", error: "Error" };
+  document.querySelectorAll(".variant").forEach((v) => {
+    const frame = v.querySelector(".frame");
+    const group = v.querySelector(".states");
+    STATES.forEach((s) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.textContent = LABELS[s];
+      b.setAttribute("aria-pressed", String(frame.dataset.state === s));
+      b.onclick = () => {
+        frame.dataset.state = s;
+        group.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      };
+      group.appendChild(b);
+    });
+  });
+</script>
+</body>
+</html>

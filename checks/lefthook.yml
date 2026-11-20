@@ -1,0 +1,28 @@
+# Vorlage für das App-Repo (als lefthook.yml in den Repo-Root kopieren, Befehle an den Stack anpassen).
+# Gilt für jeden Commit, egal ob von Copilot, Claude, Codex oder einem Menschen.
+# Installation: https://lefthook.dev  ·  danach einmal `lefthook install`
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{js,ts,tsx,jsx,css,json,md}"
+      run: npx prettier --check {staged_files}          # <anpassen>
+    lint:
+      glob: "*.{js,ts,tsx,jsx}"
+      run: npx eslint {staged_files}                     # <anpassen>
+    copy-lint:
+      glob: "*.{tsx,jsx,html,vue,svelte,swift,strings,xcstrings,json}"
+      run: node .agents/skills/tone-of-voice/scripts/lint.mjs {staged_files} --lang de
+      fail_text: "KI-Floskeln im UI-Text gefunden (tone-of-voice). Umschreiben oder begründen."
+    secrets:
+      # schlägt fehl, wenn ein gestagter Text einen API-Key-Wert enthält
+      run: '! grep -nIE "(API_KEY|api[_-]?key|SECRET|TOKEN)[[:space:]]*[=:][[:space:]]*[\"'']?[A-Za-z0-9_-]{16,}" {staged_files}'
+      fail_text: "Möglicher API-Key in gestagten Dateien. Keys gehören nach ~/.config/ oder in Pipeline-Variablen."
+
+pre-push:
+  commands:
+    typecheck:
+      run: npx tsc --noEmit                              # <anpassen>
+    test:
+      run: npm test                                      # <anpassen>

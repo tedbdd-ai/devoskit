@@ -1,0 +1,17 @@
+{
+  "_note": "Eine Liste für alle Agenten. scripts/mcp-sync.mjs erzeugt daraus .vscode/mcp.json (Copilot), .mcp.json (Claude Code), .cursor/mcp.json (Cursor) und ein TOML-Snippet für Codex. Keine Secrets hier: Werte als ${env:NAME} referenzieren.",
+  "servers": {
+    "awwwards": {
+      "os": "design",
+      "command": "npx",
+      "args": ["-y", "awwwards-mcp"],
+      "description": "Design-Referenzen und Seitenanalysen von Awwwards"
+    }
+  },
+  "candidates": {
+    "_note": "Noch nicht aktiv. Nach Klärung von Ticket-System und Betriebs-Werkzeugen nach 'servers' verschieben.",
+    "atlassian": { "os": "conception, deploy", "remote": "https://mcp.atlassian.com/v1/mcp", "description": "Jira, Confluence, Bitbucket (Rovo MCP)" },
+    "inspo": { "os": "design", "command": "npx", "args": ["-y", "inspo-mcp"], "description": "kuratiertes Archiv echter Website-Designs" },
+    "test-app": { "os": "test", "description": "eigener MCP-Server der Test-App (zu bauen)" }
+  }
+}

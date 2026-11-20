@@ -1,0 +1,8 @@
+# Ein Eintrag pro Standard. "when" entscheidet, ob der Agent die Datei lädt.
+standards:
+  - name: error-handling
+    file: global/error-handling.md
+    when: Code, der fehlschlagen kann (I/O, Netzwerk, Parsing, externe Dienste)
+  - name: ui-states
+    file: global/ui-states.md
+    when: jede datengetriebene UI-Ansicht (Loading, Empty, Error, Offline)

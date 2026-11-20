@@ -1,0 +1,55 @@
+# .lifecycle/profile.yml: Ergebnis von /lifecycle-init. Wird bei erneutem Aufruf gelesen und aktualisiert.
+version: 1
+initialized: YYYY-MM-DD
+updated: YYYY-MM-DD
+lifecycle_os:
+  url: <git-url>
+  commit: <commit aus skills-lock.json>
+
+project:
+  description: <A1>
+  agents: [github-copilot, claude-code]        # A2
+  ui_language: [de]                             # A3
+  address: du                                   # A3
+
+tech:
+  platforms: [web]                              # B1: web | ios | android | desktop | backend
+  stack: [typescript, react]                    # B2
+  commands:                                     # B3
+    build: <…>
+    test: <…>
+    lint: <…>
+    format: <…>
+    dev: <…>
+  tokens: <pfad oder null>                      # B4
+
+workflow:
+  tickets: { system: jira, project_key: <KEY> } # C1
+  branching: feature-branch-pr                  # C2
+  reviewers: 1                                  # C2
+  spec_depth: light                             # C3: light | formal
+  tdd: core-logic                               # C4: yes | core-logic | no
+
+test:
+  status: configured                            # configured | later | pending
+  test_app_interface: mcp                       # D1: mcp | cli | rest | none
+  existing: [unit, e2e]                         # D2
+  e2e_runs_in: pipeline                         # D3
+
+deploy:
+  status: later
+  environments: [staging, production]           # E1
+  targets: <hosting / app store>                # E1
+  production_approvers: [<name>]                # E2
+
+ops:
+  status: later
+  tools: []                                     # E3
+  autonomy_level: 1                             # E4
+
+installed:
+  os: [conception, design, dev]
+  skills:
+    - { name: grill-me, source: mattpocock/skills }
+  mcp: [awwwards]
+  checks: lefthook.yml
