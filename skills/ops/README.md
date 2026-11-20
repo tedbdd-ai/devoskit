@@ -23,6 +23,6 @@ Jedes Runbook trägt im Kopf seine Stufe. Ohne Angabe gilt Stufe 1.
 
 ## Werkzeuge
 
-- MCP-Server für die tatsächlich genutzten Systeme (Monitoring, Logs, Fehler-Tracking, Ticket-System) aufnehmen. Welche Systeme im Einsatz sind, fragt `lifecycle-init` (E3).
+- MCP-Server für die tatsächlich genutzten Systeme (Monitoring, Logs, Fehler-Tracking, Ticket-System) aufnehmen. Welche Systeme im Einsatz sind, fragt `devoskit-init` (E3).
 - Sammlung von SRE-Skills als Vorlage: https://github.com/sinzin91/awesome-sre-skills
 - Leitplanken wie im Deploy OS: minimale Rechte, alles nachvollziehbar, Not-Aus (Credentials des Agenten sofort entziehbar).

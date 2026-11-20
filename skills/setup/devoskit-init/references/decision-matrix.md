@@ -1,6 +1,6 @@
 # Entscheidungsmatrix
 
-Aus den Antworten (`questions.md`) folgt, was installiert wird. `OS_URL` = Git-URL von lifecycle-os, `AGENTS` = Agentenliste aus A2.
+Aus den Antworten (`questions.md`) folgt, was installiert wird. `OS_URL` = Git-URL von devoskit, `AGENTS` = Agentenliste aus A2.
 
 ## Agenten (A2)
 

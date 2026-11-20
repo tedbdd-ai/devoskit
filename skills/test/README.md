@@ -22,4 +22,4 @@ Um die **eigene Test-App** gebaut, nicht um fremde Skills.
 
 ## Bei der Einrichtung gefragt
 
-`lifecycle-init` fragt nach der Schnittstelle der Test-App (D1), den vorhandenen Testarten (D2) und wo E2E-Tests laufen (D3). Davon hängt ab, ob zuerst ein MCP-Server gebaut wird und wie der Pipeline-Schritt aussieht.
+`devoskit-init` fragt nach der Schnittstelle der Test-App (D1), den vorhandenen Testarten (D2) und wo E2E-Tests laufen (D3). Davon hängt ab, ob zuerst ein MCP-Server gebaut wird und wie der Pipeline-Schritt aussieht.

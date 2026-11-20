@@ -24,7 +24,7 @@ npx skills add mattpocock/skills --skill setup-matt-pocock-skills grill-me grill
 
 ## Bei der Einrichtung gefragt
 
-- **Ticket-System** (C1) und **Spec-Tiefe** (C3) fragt `lifecycle-init`. Bei Jira/Bitbucket nimmt es den Atlassian-MCP-Server in die Projektliste auf und gibt das Ticket-System an `setup-matt-pocock-skills` weiter.
+- **Ticket-System** (C1) und **Spec-Tiefe** (C3) fragt `devoskit-init`. Bei Jira/Bitbucket nimmt es den Atlassian-MCP-Server in die Projektliste auf und gibt das Ticket-System an `setup-matt-pocock-skills` weiter.
 - Verbindung zum Design OS: nach `to-spec` für UI-Features `app-mockup`; Texte über `tone-of-voice`.
 
 ## Alternativen (nicht mischen)

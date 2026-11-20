@@ -1,8 +1,8 @@
-# lifecycle-os
+# devoskit
 
-> **Arbeitstitel.** Nicht „Agent OS“ nennen: Unter diesem Namen gibt es bereits ein bekanntes Open-Source-Framework (buildermethods/agent-os). Umbenennen: Ordner/Repo umbenennen und `lifecycle-os` in den `.md`-Dateien ersetzen.
+Repo: https://github.com/tedbdd-ai/devoskit
 
-Gemeinsames Betriebssystem für KI-Agenten in einem Bitbucket-Projekt: Skills, Standards, Checks und Pipeline-Bausteine für den ganzen Lebenszyklus einer App. **Agent-agnostisch**: funktioniert mit GitHub Copilot in VS Code, Claude Code, Codex, Cursor und anderen Agenten, die die offenen Standards lesen.
+Gemeinsames Betriebssystem für KI-Agenten in einem Projekt mit mehreren App-Repos: Skills, Standards, Checks und Pipeline-Bausteine für den ganzen Lebenszyklus einer App. **Agent-agnostisch**: funktioniert mit GitHub Copilot in VS Code, Claude Code, Codex, Cursor und anderen Agenten, die die offenen Standards lesen.
 
 ```
 Konzeption → Design → Dev → Test → Deploy → Betrieb
@@ -14,7 +14,7 @@ Konzeption → Design → Dev → Test → Deploy → Betrieb
 
 | Repo | Inhalt | Ändert sich |
 |---|---|---|
-| `lifecycle-os` (dieses) | Werkzeuge: Skills, Standards, Checks, Pipeline-Bausteine, MCP-Liste, Vorlagen | selten, kuratiert, versioniert |
+| `devoskit` (dieses) | Werkzeuge: Skills, Standards, Checks, Pipeline-Bausteine, MCP-Liste, Vorlagen | selten, kuratiert, versioniert |
 | `design-library` | Inhalte: Referenzen, Stil-Rezepte, Basis-Tokens, Icon-Packs, Markenstimmen | laufend, bei der Arbeit |
 | `app-…` | die Apps. Bekommen `AGENTS.md`, `.agents/skills/` + `skills-lock.json`, Checks, Pipelines | |
 
@@ -44,14 +44,14 @@ Konvention: `design-library` wird als **Geschwister-Ordner** neben die App-Repos
 
 ## Installation in ein App-Repo
 
-Siehe [`INSTALL.md`](INSTALL.md). Die Einrichtung übernimmt der Skill [`lifecycle-init`](skills/setup/lifecycle-init/SKILL.md):
+Siehe [`INSTALL.md`](INSTALL.md). Die Einrichtung übernimmt der Skill [`devoskit-init`](skills/setup/devoskit-init/SKILL.md):
 
 1. **Erkennen:** Stack, Plattformen, Befehle, Test-Frameworks, Pipeline, Git-Remote aus dem Repo lesen.
 2. **Fragen:** nur, was nicht erkennbar ist, in fünf Blöcken (Projekt & Team, Technik, Arbeitsweise, Test, Deploy & Betrieb); Test und Deploy dürfen „später“ sein.
 3. **Plan zeigen:** welche OS, Skills, Checks, MCP-Server und Dateien. Erst nach Freigabe ausführen.
-4. **Profil speichern:** `.lifecycle/profile.yml`. Ein erneuter Aufruf ändert nur die Differenz.
+4. **Profil speichern:** `.devoskit/profile.yml`. Ein erneuter Aufruf ändert nur die Differenz.
 
-Welche Antwort was auslöst, steht in [`decision-matrix.md`](skills/setup/lifecycle-init/references/decision-matrix.md); die Fragen in [`questions.md`](skills/setup/lifecycle-init/references/questions.md).
+Welche Antwort was auslöst, steht in [`decision-matrix.md`](skills/setup/devoskit-init/references/decision-matrix.md); die Fragen in [`questions.md`](skills/setup/devoskit-init/references/questions.md).
 
 ## Grundsätze für alle OS
 

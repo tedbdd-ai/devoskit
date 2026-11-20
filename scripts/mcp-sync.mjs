@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Writes per-agent MCP configs into the current app repo.
-//   node <lifecycle-os>/scripts/mcp-sync.mjs [--source .lifecycle/mcp.json] [--agents copilot,claude,cursor] [--codex] [--dry-run]
-// Source: a file with {"servers": {...}} in the format of lifecycle-os/mcp/servers.json (default: that file).
+//   node <devoskit>/scripts/mcp-sync.mjs [--source .devoskit/mcp.json] [--agents copilot,claude,cursor] [--codex] [--dry-run]
+// Source: a file with {"servers": {...}} in the format of devoskit/mcp/servers.json (default: that file).
 // Merges: servers already in the target files stay; servers from the source are added or updated.
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";

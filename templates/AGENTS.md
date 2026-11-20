@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Regeln für alle KI-Agenten in diesem Repo (Copilot, Claude Code, Codex, Cursor …). Grundlage ist `lifecycle-os`; projektspezifische Abweichungen hier ausdrücklich festhalten.
+Regeln für alle KI-Agenten in diesem Repo (Copilot, Claude Code, Codex, Cursor …). Grundlage ist `devoskit`; projektspezifische Abweichungen hier ausdrücklich festhalten.
 
 ## Projekt
 - **Was:** <eine Zeile, was die App tut und für wen>
@@ -9,7 +9,7 @@ Regeln für alle KI-Agenten in diesem Repo (Copilot, Claude Code, Codex, Cursor 
 - **Ticket-System:** <Jira-Projekt / Bitbucket Issues>
 
 ## Lebenszyklus und Skills
-Skills liegen in `.agents/skills/` (installiert aus `lifecycle-os`, Versionen in `skills-lock.json`). Alle Befehle aus dem Repo-Root.
+Skills liegen in `.agents/skills/` (installiert aus `devoskit`, Versionen in `skills-lock.json`). Alle Befehle aus dem Repo-Root.
 
 | Phase | Einstieg |
 |---|---|

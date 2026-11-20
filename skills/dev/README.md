@@ -30,7 +30,7 @@ npx skills add mattpocock/skills --skill implement implement-spec tdd code-revie
 
 ## Stack-spezifisch
 
-Je nach Stack ergänzen, z. B. React/Next.js: `vercel-labs/agent-skills` (React Best Practices); iOS: Simulator-Werkzeuge des jeweiligen Agenten. `lifecycle-init` sucht passende Skills zum erkannten Stack (`npx skills find <framework>`) und installiert nur nach Bestätigung.
+Je nach Stack ergänzen, z. B. React/Next.js: `vercel-labs/agent-skills` (React Best Practices); iOS: Simulator-Werkzeuge des jeweiligen Agenten. `devoskit-init` sucht passende Skills zum erkannten Stack (`npx skills find <framework>`) und installiert nur nach Bestätigung.
 
 ## Standards nach dem Agent-OS-Prinzip
 

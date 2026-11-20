@@ -1,8 +1,8 @@
-# .lifecycle/profile.yml: Ergebnis von /lifecycle-init. Wird bei erneutem Aufruf gelesen und aktualisiert.
+# .devoskit/profile.yml: Ergebnis von /devoskit-init. Wird bei erneutem Aufruf gelesen und aktualisiert.
 version: 1
 initialized: YYYY-MM-DD
 updated: YYYY-MM-DD
-lifecycle_os:
+devoskit:
   url: <git-url>
   commit: <commit aus skills-lock.json>
 
